@@ -1,0 +1,3 @@
+rootProject.name = 'AbschlussProject'
+include ':backend', ':module'
+include ':frontend', ':module'
