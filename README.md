@@ -1,6 +1,6 @@
 # AbschlussProject_BSINFO
 
-#BUILD
+## BUILD
 ```
 ./gradlew bootRun
 ng serve
