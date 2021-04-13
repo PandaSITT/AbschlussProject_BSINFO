@@ -25,6 +25,8 @@ npm update npm -g
 
 ## MySQL einrichten
 
+User: BackendUserDB
+
 ```
 sudo apt intall mysql-server -y
 sudo mysql
