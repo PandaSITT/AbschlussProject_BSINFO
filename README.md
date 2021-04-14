@@ -29,7 +29,7 @@ npm update npm -g
 User: BackendUserDB
 
 ```
-sudo apt install mysql-server -y
+sudo apt install mysql-server-8.0 -y
 sudo mysql
 # alternativ mysql -uroot -p<root password>
 
