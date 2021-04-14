@@ -1,0 +1,10 @@
+<class name = "User" table = "USER">
+
+    <meta attribute = "class-description">
+        This class contains the employee detail.
+    </meta>
+
+    <property name = "benutzerName" column = "benutzer_name" type = "string"/>
+    <property name = "id" column = "id" type = "int"/>
+
+</class>
