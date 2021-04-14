@@ -18,6 +18,7 @@ add-apt-repository ppa:cwchien/gradle
 apt-get update
 apt install gradle
 apt install NPM
+apt install ng-common
 npm install npm -g
 npm update npm -g
 ```
