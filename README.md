@@ -28,10 +28,11 @@ npm update npm -g
 User: BackendUserDB
 
 ```
-sudo apt intall mysql-server -y
+sudo apt install mysql-server -y
 sudo mysql
 # alternativ mysql -uroot -p<root password>
 
 CREATE USER IF NOT EXISTS 'BackendUserDB'@'localhost' IDENTIFIED BY '<neuer Benutzer Passwort>';
 GRANT ALL PRIVILEGES ON *.* TO 'BackendUserDB'@'localhost';
+CREATE Database WebseiteDB;
 ```
