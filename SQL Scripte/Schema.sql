@@ -86,5 +86,5 @@ group by R_ID;
 Create TRIGGER Raum_Add_User
 	After Insert On Raeume
     FOR EACH ROW 
-		INSERT INTO Raum_User(RU_Raum_ID, RU_User_ID, RU_Raum_Admin)
-		value(NEW.R_ID, NEW.R_User_Manager_ID, true);
+	INSERT INTO Raum_User(RU_Raum_ID, RU_User_ID, RU_Raum_Admin)
+	value(NEW.R_ID, NEW.R_User_Manager_ID, true);
