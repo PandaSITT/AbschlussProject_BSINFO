@@ -30,6 +30,33 @@ CREATE TABLE User_Passwort (
     FOREIGN KEY(UP_User_ID) REFERENCES User(U_ID)
 );
 
+-- Content
+CREATE TABLE Raeume (
+	R_ID int PRIMARY KEY AUTO_INCREMENT,
+    R_Name varchar(255) NOT NULL,
+    R_User_Manager_ID int NOT NULL,
+    R_CreateDate timestamp NOT NULL DEFAULT current_timestamp,
+    FOREIGN KEY(R_User_Manager_ID) REFERENCES User(U_ID)
+);
+CREATE TABLE Raeum_User (
+	RU_Raum_ID int NOT NULL,
+    RU_User_ID int NOT NULL,
+    RU_Raum_Admin boolean NOT NULL,
+    FOREIGN KEY(RU_Raum_ID) REFERENCES Raeume(R_ID),
+    FOREIGN KEY(RU_User_ID) REFERENCES User(U_ID),
+    CONSTRAINT RU_PrimaryKey PRIMARY KEY (RU_Raum_ID, RU_User_ID) 
+);
+CREATE TABLE Content (
+	C_ID int PRIMARY KEY  AUTO_INCREMENT,
+    C_Raum_ID int NOT NULL,
+    C_User_Creator_ID int NOT NULL,
+    C_Text varchar(255) NOT NULL,
+    C_Pinned boolean NOT NULL default false,
+    C_CreateDate timestamp NOT NULL DEFAULT current_timestamp,
+    FOREIGN KEY(C_Raum_ID) REFERENCES Raeume(R_ID),
+    FOREIGN KEY(C_User_Creator_ID) REFERENCES User(U_ID)
+);
+
 -- View
 CREATE VIEW User_Overview AS
 select U_ID AS 'User ID',
@@ -42,3 +69,15 @@ select U_ID AS 'User ID',
 from User
 left join User_Rolle on User_Rolle.UR_ID = User.U_Rolle_ID
 left join Geschlecht on Geschlecht.G_ID = User.U_Geschlecht_ID;
+
+CREATE VIEW Raum_Overview AS
+select R_ID AS 'Raum ID',
+R_Name As 'Raum Name',
+Creator_User.U_Benutzername AS 'Creator Name',
+Creator_User.U_ID AS 'Creator ID',
+COUNT(RU_Raum_ID) AS 'User Count',
+R_CreateDate As 'Erstellungdatum'
+from Raeume
+left join User as Creator_User on Raeume.R_Name = User.U_ID
+right join Raeum_User on Raeume.R_ID = Raeum_User.RU_Raum_ID
+group by R_ID;
