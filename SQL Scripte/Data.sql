@@ -1,3 +1,5 @@
+use WebseiteDB;
+
 -- Flag Data
 insert into Geschlecht(G_Name, G_Anrede) value
 ('Mänlich', 'Herr'),

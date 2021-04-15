@@ -5,7 +5,7 @@
 <hibernate-configuration>
     <session-factory>
 
-        <mapping class="com.bsinfo.AbschlussProject.entities.UserEntity.java" />
+        <mapping class="com.bsinfo.AbschlussProject.entities.UserEntiye" />
 
     </session-factory>
 </hibernate-configuration>

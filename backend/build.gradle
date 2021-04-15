@@ -13,6 +13,7 @@ repositories {
 dependencies {
     runtimeOnly project(':frontend')
 
+    implementation group: 'javax.inject', name: 'javax.inject', version: '1'
     implementation group: 'javax.persistence', name: 'javax.persistence-api', version: '2.2'
     implementation 'org.hibernate:hibernate-core:5.4.30.Final'
     // https://mvnrepository.com/artifact/mysql/mysql-connector-java
