@@ -38,10 +38,10 @@ CREATE TABLE Raeume (
     R_CreateDate timestamp NOT NULL DEFAULT current_timestamp,
     FOREIGN KEY(R_User_Manager_ID) REFERENCES User(U_ID)
 );
-CREATE TABLE Raeum_User (
+CREATE TABLE Raum_User (
 	RU_Raum_ID int NOT NULL,
     RU_User_ID int NOT NULL,
-    RU_Raum_Admin boolean NOT NULL,
+    RU_Raum_Admin boolean NOT NULL default false,
     FOREIGN KEY(RU_Raum_ID) REFERENCES Raeume(R_ID),
     FOREIGN KEY(RU_User_ID) REFERENCES User(U_ID),
     CONSTRAINT RU_PrimaryKey PRIMARY KEY (RU_Raum_ID, RU_User_ID) 
@@ -73,11 +73,18 @@ left join Geschlecht on Geschlecht.G_ID = User.U_Geschlecht_ID;
 CREATE VIEW Raum_Overview AS
 select R_ID AS 'Raum ID',
 R_Name As 'Raum Name',
-Creator_User.U_Benutzername AS 'Creator Name',
-Creator_User.U_ID AS 'Creator ID',
+U_Benutzername AS 'Manager Name',
+R_User_Manager_ID AS 'Manager ID',
 COUNT(RU_Raum_ID) AS 'User Count',
 R_CreateDate As 'Erstellungdatum'
 from Raeume
-left join User as Creator_User on Raeume.R_Name = User.U_ID
-right join Raeum_User on Raeume.R_ID = Raeum_User.RU_Raum_ID
+left join User on Raeume.R_User_Manager_ID = User.U_ID
+left join Raum_User on Raeume.R_ID = Raum_User.RU_Raum_ID
 group by R_ID;
+
+-- Trigger
+Create TRIGGER Raum_Add_User
+	After Insert On Raeume
+    FOR EACH ROW 
+		INSERT INTO Raum_User(RU_Raum_ID, RU_User_ID, RU_Raum_Admin)
+		value(NEW.R_ID, NEW.R_User_Manager_ID, true);
