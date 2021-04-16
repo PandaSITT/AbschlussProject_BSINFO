@@ -1,15 +1,18 @@
-<class name="UserEntiye" table="User">
+<hibernate-mapping>
 
-    <id name="id" type="int" column="U_ID">
-        <generator class="native"/>
-    </id>
+    <class name="UserEntiye" table="User">
 
-    <property name="benutzerName" column="U_Benutzername" type="string"/>
-    <property name="eMail" column="U_Email" type="string"/>
-    <property name="vorname" column="U_Vorname" type="string"/>
-    <property name="nachname" column="U_Nachname" type="string"/>
-    <property name="geschlechtId" column="U_Geschlecht_ID" type="int"/>
-    <property name="rolleId" column="U_Rolle_ID" type="int"/>
+        <id name="id" type="int" column="U_ID">
+            <generator class="native"/>
+        </id>
+
+        <property name="benutzerName" column="U_Benutzername" type="string"/>
+        <property name="eMail" column="U_Email" type="string"/>
+        <property name="vorname" column="U_Vorname" type="string"/>
+        <property name="nachname" column="U_Nachname" type="string"/>
+        <property name="geschlechtId" column="U_Geschlecht_ID" type="int"/>
+        <property name="rolleId" column="U_Rolle_ID" type="int"/>
 
 
-</class>
+    </class>
+</hibernate-mapping>

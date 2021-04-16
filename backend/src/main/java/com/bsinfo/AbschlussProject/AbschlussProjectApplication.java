@@ -21,31 +21,20 @@ public class AbschlussProjectApplication {
         this.hibernate = hibernate;
     }
 
-    @RequestMapping("/resource")
-    public Map<String, Object> home() {
-        Map<String, Object> model = new HashMap<String, Object>();
-
-        model.put("id", UUID.randomUUID().toString());
-        model.put("content", "Hello Luis");
-
-        return model;
-    }
-
-
     @CrossOrigin
     @PostMapping("/users")
     public void createUser(@RequestBody UserEntiye user) {
         hibernate.saveEntity(user);
     }
-
+/*
     @CrossOrigin
     @GetMapping("/users")
     public UserEntiye getUser(@RequestBody String benutzerName) {
         return (UserEntiye) hibernate.getEntity(benutzerName, UserEntiye.class);
     }
-
+*/
     @CrossOrigin
-    @GetMapping("/users")
+    @GetMapping("/users ")
     public List<UserEntiye> getUsers() {
         return (List<UserEntiye>) hibernate.getAllEntities(UserEntiye.class);
     }

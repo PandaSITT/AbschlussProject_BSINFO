@@ -25,6 +25,9 @@ public class UserEntiye{
     @Column(name = "U_Rolle_ID")
     private int rolleId;
 
+    public UserEntiye( ) {
+
+    }
 
     public UserEntiye( String benutzerName, String eMail, String vorname, String nachname, int geschlechtId, int rolleId) {
         this.benutzerName = benutzerName;
