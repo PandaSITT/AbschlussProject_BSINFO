@@ -35,5 +35,6 @@ sudo mysql
 
 CREATE USER IF NOT EXISTS 'BackendUserDB'@'localhost' IDENTIFIED BY '<neuer Benutzer Passwort>';
 GRANT ALL PRIVILEGES ON *.* TO 'BackendUserDB'@'localhost';
-CREATE Database WebseiteDB;
+SOURCE /<Pfad>/SQL Scripte/schema.sql
+SOURCE /<Pfad>/SQL Scripte/data.sql
 ```
